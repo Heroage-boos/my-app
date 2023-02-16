@@ -33,6 +33,20 @@
 <script>
 export default {
   name: 'HelloWorld',
+  //SE0 
+  metaInfo:{
+    title: 'message',
+    meta: [
+      {
+        name: 'description',
+        content: '这是hello world页面',
+      },
+      {
+        name: 'keywords',
+        content: 'message'
+      }
+    ]
+  },
   props: {
     msg: String
   }

@@ -5,20 +5,37 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged --allow-empty"
   },
   "dependencies": {
+    "babel-eslint": "^10.1.0",
     "core-js": "^3.8.3",
-    "vue": "^3.2.13"
+    "eslint-plugin-html": "^7.1.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "vue": "^3.2.13",
+    "vue-eslint-parser": "^9.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
+    "@commitlint/cli": "^17.4.3",
+    "@commitlint/config-conventional": "^17.4.3",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3"
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^8.7.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.2",
+    "postcss-less": "^6.0.0",
+    "prettier": "^2.8.4",
+    "prettier-eslint-cli": "^7.1.0"
   },
   "eslintConfig": {
     "root": true,
@@ -32,7 +49,20 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {},
+    "lint-staged": {
+      "src/**/!(*.min).js": [
+        "prettier --write",
+        "eslint --fix"
+      ],
+      "src/**/*.{ts,vue}": [
+        "prettier --write",
+        "eslint --fix"
+      ],
+      "src/**/*.{ts,js,vue,html,css,scss,sass,stylus}": [
+        "prettier --write"
+      ]
+    }
   },
   "browserslist": [
     "> 1%",
